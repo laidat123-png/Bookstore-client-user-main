@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import './index.css'
 export const Featured = (props) => {
   const { product } = props
-  console.log(product)
+  // console.log(product)
   return (
     <section className='featured-wrap'>
       <Container>

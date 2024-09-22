@@ -22,3 +22,6 @@ export const Paginate = (props) => {
         />
     )
 }
+//Component Paginate này giúp hiển thị và quản lý việc phân trang 
+//trong ứng dụng React. Nó sử dụng ReactPaginate để tạo giao diện phân trang 
+//và gọi hàm callback onChangePaginate khi người dùng chọn trang mới.

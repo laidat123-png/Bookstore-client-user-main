@@ -28,3 +28,6 @@ export const Title = () => {
         </div>
     )
 }
+//Component Title sử dụng useHistory để lấy thông tin về URL hiện tại.
+//Hàm findIndexByString tìm vị trí của ký tự / thứ hai trong pathname.
+//JSX được render để hiển thị tiêu đề trang và một liên kết đến trang chủ.

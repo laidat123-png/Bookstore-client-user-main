@@ -48,8 +48,8 @@ export const Card = (props) => {
     // }
     const checkExist = (id, arr) => {
         let bool = false;
-        arr.forEach(elm => {
-            if (elm.product._id === id) {
+        arr.forEach(elm => { // Duyệt qua từng phần tử trong mảng arr
+            if (elm.product._id === id) { // Kiểm tra nếu id của sản phẩm trong phần tử trùng với id cần tìm
                 bool = true;
             }
         })
@@ -57,19 +57,19 @@ export const Card = (props) => {
     }
     return (
         <div className="book-card">
-            {product.sale > 0 ? <div className="book-card_onsale">Sale {product.sale}%</div> : ""}
+            {/* {product.sale > 0 ? <div className="book-card_onsale">Sale {product.sale}%</div> : ""} */}
             <Link to={`/Detail-product/${product._id}`} className="book-link">
                 <div className="book-image_wrap">
                     <img
                         src={product.urls[0].url}
-                        alt={product.title}
+                        alt={product.title}// Nếu ảnh không hiển thị, sẽ hiển thị dòng chữ này
                     />
                 </div>
                 <div className="book-content_wrap">
                     <h2 className="book-title">{product.title}</h2>
                     <p className="book-author">{product.author}</p>
-                    {product.sale > 0 ? <span className="book-price_sale">{formatNumber(product.price)}₫</span> : ""}
-                    {product.sale > 0 ? <span className="book-price">{formatNumber(product.price - (product.price * product.sale / 100))}₫</span> : <span className="book-price">{formatNumber(product.price)}₫</span>}
+                    {product.sale > 0 ? <span className="book-price_sale">{formatNumber(product.price)}₫</span> : ""} {/*nếu có sale,hiển thị giá giảm, ko thì rỗng*/}
+                    {product.sale > 0 ? <span className="book-price">{formatNumber(product.price - (product.price * product.sale / 100))}₫</span> : <span className="book-price">{formatNumber(product.price)}₫</span>} {/* Nếu có giá sale, hiển thị giá sale; nếu không, hiển thị giá gốc*/}
                 </div>
             </Link>
             {/* <div className="book-button">

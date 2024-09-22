@@ -15,7 +15,7 @@ export const SignUp = (props) => {
                     <label>Email</label>
                     <div>
                         <input
-                            {...register("email", { required: true, pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })}
+                            {...register("email", { required: true, pattern: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/ })}//biểu thức chính quy này kiểm tra xem chuỗi có phải là một địa chỉ email hợp lệ hay không
                             type="text"
                         />
                     </div>

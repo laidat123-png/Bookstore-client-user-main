@@ -61,39 +61,39 @@ export const DetailProduct = () => {
             dispatch(getProductAlsoLike(false));
         }
     }, [params.id])
-    const onSubmitReview = (data) => {
-        if (user._id) {
-            addReviewRequest(dispatch, data, product._id);
-        } else {
-            toast("Hãy đăng nhập để thêm review", toastConfig);
-        }
-    }
+    // const onSubmitReview = (data) => {
+    //     if (user._id) {
+    //         addReviewRequest(dispatch, data, product._id);
+    //     } else {
+    //         toast("Hãy đăng nhập để thêm review", toastConfig);
+    //     }
+    // }
     const filterProductByType = (idType) => {
         searchProductByField(dispatch, { types: idType, title: "" })
     }
-    const addProductToCart = () => {
-        if (user._id) {
-            setLoadingBtn(true);
-            addProductToCartRequest(product, quantity)
-                .then(data => {
-                    if (data.status === "success") {
-                        dispatch(addCart(product, quantity, data.idCart));
-                        dispatch(toggleCart(true));
-                        dispatch(setSubTotalCart(data.subTotal));
-                        setLoadingBtn(false);
-                        setQuantity(1);
-                    } else {
-                        toast.success("Thêm vào giỏ hàng thất bại !", toastConfig)
-                        setLoadingBtn(false);
-                    }
-                })
-                .catch(err => {
-                    setLoadingBtn(false);
-                })
-        } else {
-            toast("Hãy đăng nhập để thêm vào giỏ hàng", toastConfig);
-        }
-    }
+    // const addProductToCart = () => {
+    //     if (user._id) {
+    //         setLoadingBtn(true);
+    //         addProductToCartRequest(product, quantity)
+    //             .then(data => {
+    //                 if (data.status === "success") {
+    //                     dispatch(addCart(product, quantity, data.idCart));
+    //                     dispatch(toggleCart(true));
+    //                     dispatch(setSubTotalCart(data.subTotal));
+    //                     setLoadingBtn(false);
+    //                     setQuantity(1);
+    //                 } else {
+    //                     toast.success("Thêm vào giỏ hàng thất bại !", toastConfig)
+    //                     setLoadingBtn(false);
+    //                 }
+    //             })
+    //             .catch(err => {
+    //                 setLoadingBtn(false);
+    //             })
+    //     } else {
+    //         toast("Hãy đăng nhập để thêm vào giỏ hàng", toastConfig);
+    //     }
+    // }
     const checkProductInCart = () => {
         let index = -1;
         listCart.forEach((cart, i) => {

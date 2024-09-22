@@ -4,25 +4,25 @@ import { ListOrders } from './ListOrders';
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 export const Orders = (props) => {
-    const {
-        listOrder,
-        setStatusOrder,
-        showStatus,
-        orderTotal,
-        setOrderDetail,
-        setActive,
-        handleDeleteOrderRequest,
-        handleSearchOrderByID
-    } = props;
-    const [activeLi, setActiveLi] = useState(-1);
-    const { register, handleSubmit } = useForm();
-    const handleChangeSatusOrder = (num) => {
-        setStatusOrder(num);
-        setActiveLi(num);
-    }
+    // const {
+    //     listOrder,
+    //     setStatusOrder,
+    //     showStatus,
+    //     orderTotal,
+    //     setOrderDetail,
+    //     setActive,
+    //     handleDeleteOrderRequest,
+    //     handleSearchOrderByID
+    // } = props;
+    // const [activeLi, setActiveLi] = useState(-1);
+    // const { register, handleSubmit } = useForm();
+    // const handleChangeSatusOrder = (num) => {
+    //     setStatusOrder(num);
+    //     setActiveLi(num);
+    // }
     return (
         <div className="order">
-            <div className="show-listOrder">
+            {/* <div className="show-listOrder">
                 <div className="status-bar">
                     <ul>
                         <li className={activeLi === -1 ? "active" : ""} onClick={() => handleChangeSatusOrder(-1)}>Tất cả {orderTotal[0] > 0 ? `(${orderTotal[0]})` : ""}</li>
@@ -52,7 +52,7 @@ export const Orders = (props) => {
                         handleDeleteOrderRequest={handleDeleteOrderRequest}
                     />
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

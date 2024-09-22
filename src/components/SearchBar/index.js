@@ -19,29 +19,29 @@ export const SearchBar = () => {
         type: "",
         nxb: ""
     })
-    useEffect(() => {
-        if (history.location.pathname.slice(1) === "Bookstore") {
-            if (history.location.state?.status) {
-                setDefaultValue({
-                    type: sessionStorage.getItem("types"),
-                    nxb: sessionStorage.getItem("publicCompany")
-                })
-                sessionStorage.removeItem("types");
-                sessionStorage.removeItem("publicCompany");
-            }
-        }
-    }, [history])
-    const onSubmitSearch = (data) => {
-        if (data.types === "" && data.publicCompany === "" && data.title === "") {
-            toast("Bạn chưa nhập thông tin tìm kiếm !", toastConfig);
-        }
-        else {
-            searchProductByField(dispatch, data);
-            history.push("/Bookstore", { status: true });
-            sessionStorage.setItem("types", data.types);
-            sessionStorage.setItem("publicCompany", data.publicCompany);
-        }
-    }
+    // useEffect(() => {
+    //     if (history.location.pathname.slice(1) === "Bookstore") {
+    //         if (history.location.state?.status) {
+    //             setDefaultValue({
+    //                 type: sessionStorage.getItem("types"),
+    //                 nxb: sessionStorage.getItem("publicCompany")
+    //             })
+    //             sessionStorage.removeItem("types");
+    //             sessionStorage.removeItem("publicCompany");
+    //         }
+    //     }
+    // }, [history])
+    // const onSubmitSearch = (data) => {
+    //     if (data.types === "" && data.publicCompany === "" && data.title === "") {
+    //         toast("Bạn chưa nhập thông tin tìm kiếm !", toastConfig);
+    //     }
+    //     else {
+    //         searchProductByField(dispatch, data);
+    //         history.push("/Bookstore", { status: true });
+    //         sessionStorage.setItem("types", data.types);
+    //         sessionStorage.setItem("publicCompany", data.publicCompany);
+    //     }
+    // }
     return (
         <div className="search-wrap">
             {/* <Container>

@@ -11,7 +11,7 @@ export const CartWidget = () => {
     const carts = useSelector(state => state.cart);
     return (
         <div className={`cartWidget-wrap ${isOpen ? "active" : ""}`}>
-            <div className="cartWidget-heading">
+            {/* <div className="cartWidget-heading">
                 <p className="cartWidget-title">GIỎ HÀNG</p>
                 <div className="cartWidget-close" onClick={() => dispatch(toggleCart(false))}>
                     <span>CLOSE</span>
@@ -52,7 +52,7 @@ export const CartWidget = () => {
                     <Link to="/Cart" onClick={() => dispatch(toggleCart(false))}>Xem giỏ hàng</Link>
                     <Link to="/Checkout" onClick={() => dispatch(toggleCart(false))} >Thanh toán</Link>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

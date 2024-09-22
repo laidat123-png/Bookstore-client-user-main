@@ -14,3 +14,5 @@ export const MainLayout = (props) => {
         </div>
     )
 }
+// Bố cục chính
+//Component MainLayout sẽ render ra Header, Title, SearchBar, Footer và props.children.

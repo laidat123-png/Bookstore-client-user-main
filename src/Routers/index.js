@@ -24,27 +24,27 @@ export const routers = [
         component: DetailProduct,
         layout: true
     },
-    {
-        path: "/Blog",
-        exact: true,
-        component: Blog,
-        layout: true
-    },
-    {
-        path: "/Detail-post/:id",
-        exact: true,
-        component: DetailPost,
-        layout: true
-    },
+    // {
+    //     path: "/Blog",
+    //     exact: true,
+    //     component: Blog,
+    //     layout: true
+    // },
+    // {
+    //     path: "/Detail-post/:id",
+    //     exact: true,
+    //     component: DetailPost,
+    //     layout: true
+    // },
     {
         path: "/Auth",
         exact: true,
         component: Auth
     },
-    {
-        path: "/Contact",
-        exact: true,
-        component: Contact,
-        layout: true
-    },
+    // {
+    //     path: "/Contact",
+    //     exact: true,
+    //     component: Contact,
+    //     layout: true
+    // },
 ]

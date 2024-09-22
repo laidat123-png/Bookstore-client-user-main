@@ -81,10 +81,10 @@ export const BookStore = () => {
                                 </div>
                             )} */}
                         </Row>
-                        {totalPage < 1 ? "" : <Paginate
+                        {/* {totalPage < 1 ? "" : <Paginate
                             onChangePaginate={onChangePaginate}
                             totalPage={totalPage}
-                        />}
+                        />} */}
                     </Col>
                     {/* <Col lg={4} md={12} xs={12} xl={3}>
                         <FilterPrice

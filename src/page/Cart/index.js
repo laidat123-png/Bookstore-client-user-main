@@ -7,19 +7,19 @@ import "./index.css";
 import { Loader } from '../../components/Loader';
 import { formatNumber } from '../../helpers/formatNumber';
 export const Cart = () => {
-    const carts = useSelector(state => state.cart);
-    const subTotal = useSelector(state => state.subTotal);
-    const isLoading = useSelector(state => state.loading.loadingpc);
-    const dispatch = useDispatch();
-    const handleAddAmountProduct = (product, quantity) => {
-        dispatch(updateOneCart(product, quantity));
-    }
-    const onSubmitUpdateCart = () => {
-        updateAllCartRequest(dispatch, carts);
-    }
+    // const carts = useSelector(state => state.cart);
+    // const subTotal = useSelector(state => state.subTotal);
+    // const isLoading = useSelector(state => state.loading.loadingpc);
+    // const dispatch = useDispatch();
+    // const handleAddAmountProduct = (product, quantity) => {
+    //     dispatch(updateOneCart(product, quantity));
+    // }
+    // const onSubmitUpdateCart = () => {
+    //     updateAllCartRequest(dispatch, carts);
+    // }
     return (
         <div className="cart-wrap">
-            {isLoading ? <Loader /> : ""}
+            {/* {isLoading ? <Loader /> : ""}
             <Container fluid>
                 <Row>
                     <Col lg={8}>
@@ -60,7 +60,7 @@ export const Cart = () => {
                         </div>
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
         </div>
     )
 }

@@ -11,24 +11,24 @@ import { toastConfig } from '../../constants/configToast';
 import { useState } from "react";
 import "./index.css";
 export const Contact = () => {
-    const [isLoading, setIsLoading] = useState(false);
-    const onSubmitForm = (e) => {
-        setIsLoading(true);
-        e.preventDefault();
-        emailjs.sendForm("service_ek2seqq", "template_3i8drd7", e.target, "user_Ye2TEIAtUzzAVwSHhnDUg")
-            .then((result) => {
-                toast("Đã gửi thành công!", toastConfig);
-                e.target.reset();
-                setIsLoading(false);
-            }, (error) => {
-                e.target.reset();
-                toast(error.text, toastConfig);
-                setIsLoading(false);
-            });
-    }
+    // const [isLoading, setIsLoading] = useState(false);
+    // const onSubmitForm = (e) => {
+    //     setIsLoading(true);
+    //     e.preventDefault();
+    //     emailjs.sendForm("service_ek2seqq", "template_3i8drd7", e.target, "user_Ye2TEIAtUzzAVwSHhnDUg")
+    //         .then((result) => {
+    //             toast("Đã gửi thành công!", toastConfig);
+    //             e.target.reset();
+    //             setIsLoading(false);
+    //         }, (error) => {
+    //             e.target.reset();
+    //             toast(error.text, toastConfig);
+    //             setIsLoading(false);
+    //         });
+    // }
     return (
         <div className="contact-wrap">
-            <Container>
+            {/* <Container>
                 <div className="form-wrap">
                     <Row>
                         <Col xs={12} lg={6}>
@@ -76,7 +76,7 @@ export const Contact = () => {
                         </Col>
                     </Row>
                 </div>
-            </Container>
+            </Container> */}
         </div >
     )
 }

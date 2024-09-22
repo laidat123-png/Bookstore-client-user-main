@@ -14,215 +14,215 @@ import { toastConfig } from "../../constants/configToast";
 import { updateAllCartRequest, resetCart } from "../../actions/actionProducts";
 import { useLocation } from "react-router-dom";
 export const Checkout = () => {
-  const location = useLocation(); // Lấy đối tượng location từ react-router-dom
-  const getValueQuery = (name) => {
-    const query = new URLSearchParams(location.search);
+  // const location = useLocation(); // Lấy đối tượng location từ react-router-dom
+  // const getValueQuery = (name) => {
+  //   const query = new URLSearchParams(location.search);
 
-    const queryValue = query.get(name);
-    return queryValue;
-  };
+  //   const queryValue = query.get(name);
+  //   return queryValue;
+  // };
 
-  //Xử lí sau khi thanh toán xong
-  const info = JSON.parse(getValueQuery("vnp_OrderInfo"));
-  useEffect(() => {
-    if (getValueQuery("vnp_ResponseCode")) {
-      //Thanh toán thành công
-      if (getValueQuery("vnp_ResponseCode") === "00") {
-        callAPI(
-          `/user/cart/all`,
-          "POST",
-          {},
-          {
-            Authorization: `${sessionStorage.getItem("token")}`,
-          }
-        ).then(({ data }) => {
-          const productDetail = data.listCart.map((cart) => ({
-            productID: cart.product._id,
-            quantity: cart.quantity,
-          }));
-          sendRequestOrder({ ...info, productDetail });
-        });
-      } else {
-        toast.error("Thanh toán thất bại!", toastConfig);
-      }
-    }
-  }, []);
+  // //Xử lí sau khi thanh toán xong
+  // const info = JSON.parse(getValueQuery("vnp_OrderInfo"));
+  // useEffect(() => {
+  //   if (getValueQuery("vnp_ResponseCode")) {
+  //     //Thanh toán thành công
+  //     if (getValueQuery("vnp_ResponseCode") === "00") {
+  //       callAPI(
+  //         `/user/cart/all`,
+  //         "POST",
+  //         {},
+  //         {
+  //           Authorization: `${sessionStorage.getItem("token")}`,
+  //         }
+  //       ).then(({ data }) => {
+  //         const productDetail = data.listCart.map((cart) => ({
+  //           productID: cart.product._id,
+  //           quantity: cart.quantity,
+  //         }));
+  //         sendRequestOrder({ ...info, productDetail });
+  //       });
+  //     } else {
+  //       toast.error("Thanh toán thất bại!", toastConfig);
+  //     }
+  //   }
+  // }, []);
 
-  const history = useHistory();
-  const dispatch = useDispatch();
-  const { register, handleSubmit } = useForm();
-  const user = useSelector((state) => state.user);
-  const [listCity, setListCity] = useState([]);
-  const [listDistrict, setListDistrict] = useState([]);
-  const [listWard, setListWard] = useState([]);
-  const [listCart, setListCart] = useState([]);
-  const btnRef = useRef();
-  const [loadingOrder, setLoadingOrder] = useState(false);
-  const [coupon, setCoupon] = useState(null);
-  const [code, setCode] = useState("");
-  const [isCode, setIsCode] = useState(false);
-  const [loadingCode, setLoadingCode] = useState(false);
+  // const history = useHistory();
+  // const dispatch = useDispatch();
+  // const { register, handleSubmit } = useForm();
+  // const user = useSelector((state) => state.user);
+  // const [listCity, setListCity] = useState([]);
+  // const [listDistrict, setListDistrict] = useState([]);
+  // const [listWard, setListWard] = useState([]);
+  // const [listCart, setListCart] = useState([]);
+  // const btnRef = useRef();
+  // const [loadingOrder, setLoadingOrder] = useState(false);
+  // const [coupon, setCoupon] = useState(null);
+  // const [code, setCode] = useState("");
+  // const [isCode, setIsCode] = useState(false);
+  // const [loadingCode, setLoadingCode] = useState(false);
 
-  const [address, setAddress] = useState({
-    city: "",
-    district: "",
-    ward: "",
-  });
-  const subTotal = useSelector((state) => state.subTotal);
-  const getListCart = async () => {
-    const { data } = await callAPI(
-      `/user/cart/all`,
-      "POST",
-      {},
-      {
-        Authorization: `${sessionStorage.getItem("token")}`,
-      }
-    );
-    if (data.status === "success") {
-      setListCart(data.listCart);
-    }
-  };
-  const getListDistrict = async (idCity) => {
-    const { data } = await axios({
-      url: `https://vapi.vnappmob.com/api/province/district/${idCity}`,
-      method: "GET",
-    });
-    return data.results;
-  };
-  const getListWard = async (idDistrict) => {
-    const { data } = await axios({
-      url: `https://vapi.vnappmob.com/api/province/ward/${idDistrict}`,
-      method: "GET",
-    });
-    return data.results;
-  };
-  const checkCoupon = async () => {
-    if (code !== "") {
-      setLoadingCode(true);
-      const { data } = await callAPI("/code/check", "POST", { code: code });
-      if (data.status === "success") {
-        setLoadingCode(false);
-        setCoupon(data.coupon);
-        setIsCode(true);
-        toast.success("Thêm mã giảm giá thành công!", toastConfig);
-      } else {
-        toast.error(data.messenger, toastConfig);
-        setLoadingCode(false);
-      }
-    } else {
-      toast.error("Vui lòng nhập mã!", toastConfig);
-    }
-  };
+  // const [address, setAddress] = useState({
+  //   city: "",
+  //   district: "",
+  //   ward: "",
+  // });
+  // const subTotal = useSelector((state) => state.subTotal);
+  // const getListCart = async () => {
+  //   const { data } = await callAPI(
+  //     `/user/cart/all`,
+  //     "POST",
+  //     {},
+  //     {
+  //       Authorization: `${sessionStorage.getItem("token")}`,
+  //     }
+  //   );
+  //   if (data.status === "success") {
+  //     setListCart(data.listCart);
+  //   }
+  // };
+  // const getListDistrict = async (idCity) => {
+  //   const { data } = await axios({
+  //     url: `https://vapi.vnappmob.com/api/province/district/${idCity}`,
+  //     method: "GET",
+  //   });
+  //   return data.results;
+  // };
+  // const getListWard = async (idDistrict) => {
+  //   const { data } = await axios({
+  //     url: `https://vapi.vnappmob.com/api/province/ward/${idDistrict}`,
+  //     method: "GET",
+  //   });
+  //   return data.results;
+  // };
+  // const checkCoupon = async () => {
+  //   if (code !== "") {
+  //     setLoadingCode(true);
+  //     const { data } = await callAPI("/code/check", "POST", { code: code });
+  //     if (data.status === "success") {
+  //       setLoadingCode(false);
+  //       setCoupon(data.coupon);
+  //       setIsCode(true);
+  //       toast.success("Thêm mã giảm giá thành công!", toastConfig);
+  //     } else {
+  //       toast.error(data.messenger, toastConfig);
+  //       setLoadingCode(false);
+  //     }
+  //   } else {
+  //     toast.error("Vui lòng nhập mã!", toastConfig);
+  //   }
+  // };
 
-  useEffect(() => {
-    getListCity().then((data) => {
-      console.log(data);
-      setListCity(data);
-    });
-    getListCart();
-  }, []);
-  const getListCity = async () => {
-    const { data } = await axios({
-      url: "https://vapi.vnappmob.com/api/province",
-      method: "GET",
-    });
-    return data.results;
-  };
-  const handleOnChangeCity = (e) => {
-    getListDistrict(e.target.value).then((data) => setListDistrict(data));
-    setAddress({
-      ...address,
-      city: e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text,
-    });
-  };
-  const handleOnChangeDistrict = (e) => {
-    getListWard(e.target.value).then((data) => setListWard(data));
-    setAddress({
-      ...address,
-      district: e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text,
-    });
-  };
-  const handleOnChangeWard = (e) => {
-    setAddress({
-      ...address,
-      ward: e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text,
-    });
-  };
-  const sendRequestOrder = async (form) => {
-    setLoadingOrder(true);
-    const { data } = await callAPI("/orders", "POST", form);
-    if (data.status === "success") {
-      history.push("/Order-received", { ...data.order, email: user.email });
-      dispatch(resetCart());
-      updateAllCartRequest(dispatch, []);
-      setLoadingOrder(false);
-    } else {
-      setLoadingOrder(false);
-      toast.error("Đặt hàng thất bại!", toastConfig);
-    }
-  };
-  const onSubmitForm = (data) => {
-    // if (listCity.length === 0 || listDistrict.length === 0 || listWard.length === 0) {
-    //     toast.error("Vui lòng chọn địa chỉ", toastConfig);
-    //     return;
-    // }
-    if (coupon) {
-      data.saleCode = coupon._id;
-    }
-    data.userID = user._id;
-    data.email = user.email;
-    data.address = `${data.address},${address.ward},${address.district},${address.city}`;
-    data.status = 0;
-    data.total = total();
-    data.productDetail = [];
-    listCart.forEach((cart) => {
-      data.productDetail.push({
-        productID: cart.product._id,
-        quantity: cart.quantity,
-      });
-    });
-    const pay = document.querySelector("input.pay:checked").value;
-    data.pay = pay;
-    if (pay === "cod") {
-      sendRequestOrder(data);
-    }
-    if (pay === "vnpay") {
-      bankAccountVnpay(data);
-    }
-  };
-  const bankAccountVnpay = async (data) => {
-    callAPI(`/banking`, "POST", data, {
-      Authorization: `${sessionStorage.getItem("token")}`,
-    }).then(({ data }) => {
-      window.location.href = data;
-    });
-  };
-  const cancelCoupon = () => {
-    setCoupon(null);
-    setIsCode(false);
-  };
+  // useEffect(() => {
+  //   getListCity().then((data) => {
+  //     console.log(data);
+  //     setListCity(data);
+  //   });
+  //   getListCart();
+  // }, []);
+  // const getListCity = async () => {
+  //   const { data } = await axios({
+  //     url: "https://vapi.vnappmob.com/api/province",
+  //     method: "GET",
+  //   });
+  //   return data.results;
+  // };
+  // const handleOnChangeCity = (e) => {
+  //   getListDistrict(e.target.value).then((data) => setListDistrict(data));
+  //   setAddress({
+  //     ...address,
+  //     city: e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text,
+  //   });
+  // };
+  // const handleOnChangeDistrict = (e) => {
+  //   getListWard(e.target.value).then((data) => setListWard(data));
+  //   setAddress({
+  //     ...address,
+  //     district: e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text,
+  //   });
+  // };
+  // const handleOnChangeWard = (e) => {
+  //   setAddress({
+  //     ...address,
+  //     ward: e.nativeEvent.target[e.nativeEvent.target.selectedIndex].text,
+  //   });
+  // };
+  // const sendRequestOrder = async (form) => {
+  //   setLoadingOrder(true);
+  //   const { data } = await callAPI("/orders", "POST", form);
+  //   if (data.status === "success") {
+  //     history.push("/Order-received", { ...data.order, email: user.email });
+  //     dispatch(resetCart());
+  //     updateAllCartRequest(dispatch, []);
+  //     setLoadingOrder(false);
+  //   } else {
+  //     setLoadingOrder(false);
+  //     toast.error("Đặt hàng thất bại!", toastConfig);
+  //   }
+  // };
+  // const onSubmitForm = (data) => {
+  //   // if (listCity.length === 0 || listDistrict.length === 0 || listWard.length === 0) {
+  //   //     toast.error("Vui lòng chọn địa chỉ", toastConfig);
+  //   //     return;
+  //   // }
+  //   if (coupon) {
+  //     data.saleCode = coupon._id;
+  //   }
+  //   data.userID = user._id;
+  //   data.email = user.email;
+  //   data.address = `${data.address},${address.ward},${address.district},${address.city}`;
+  //   data.status = 0;
+  //   data.total = total();
+  //   data.productDetail = [];
+  //   listCart.forEach((cart) => {
+  //     data.productDetail.push({
+  //       productID: cart.product._id,
+  //       quantity: cart.quantity,
+  //     });
+  //   });
+  //   const pay = document.querySelector("input.pay:checked").value;
+  //   data.pay = pay;
+  //   if (pay === "cod") {
+  //     sendRequestOrder(data);
+  //   }
+  //   if (pay === "vnpay") {
+  //     bankAccountVnpay(data);
+  //   }
+  // };
+  // const bankAccountVnpay = async (data) => {
+  //   callAPI(`/banking`, "POST", data, {
+  //     Authorization: `${sessionStorage.getItem("token")}`,
+  //   }).then(({ data }) => {
+  //     window.location.href = data;
+  //   });
+  // };
+  // const cancelCoupon = () => {
+  //   setCoupon(null);
+  //   setIsCode(false);
+  // };
 
-  const total = () => {
-    if (coupon && listDistrict.length !== 0) {
-      let sale =
-        coupon.type === "đ"
-          ? subTotal - coupon.discount
-          : subTotal - (subTotal * coupon.discount) / 100;
-      return Math.ceil(sale + 30000);
-    } else {
-      if (coupon)
-        return Math.ceil(
-          coupon.type === "đ"
-            ? subTotal - coupon.discount
-            : subTotal - (subTotal * coupon.discount) / 100
-        );
-      if (listDistrict.length !== 0) return Math.ceil(subTotal + 30000);
-      return Math.ceil(subTotal);
-    }
-  };
+  // const total = () => {
+  //   if (coupon && listDistrict.length !== 0) {
+  //     let sale =
+  //       coupon.type === "đ"
+  //         ? subTotal - coupon.discount
+  //         : subTotal - (subTotal * coupon.discount) / 100;
+  //     return Math.ceil(sale + 30000);
+  //   } else {
+  //     if (coupon)
+  //       return Math.ceil(
+  //         coupon.type === "đ"
+  //           ? subTotal - coupon.discount
+  //           : subTotal - (subTotal * coupon.discount) / 100
+  //       );
+  //     if (listDistrict.length !== 0) return Math.ceil(subTotal + 30000);
+  //     return Math.ceil(subTotal);
+  //   }
+  // };
   return (
     <div className="checkout_wrap">
-      <Container fluid>
+      {/* <Container fluid>
         <Row>
           <Col lg={6} xl={7}>
             <div className="billing_wrap">
@@ -419,7 +419,7 @@ export const Checkout = () => {
             </div>
           </Col>
         </Row>
-      </Container>
+      </Container> */}
     </div>
   );
 };

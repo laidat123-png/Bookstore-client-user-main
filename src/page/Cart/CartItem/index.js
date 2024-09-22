@@ -8,29 +8,29 @@ import { toast } from 'react-toastify';
 import { toastConfig } from '../../../constants/configToast';
 
 export const CartItem = (props) => {
-    const dispatch = useDispatch();
-    const { cart, deleteProductInCartRequest, handleAddAmountProduct } = props;
-    const [amount, setAmount] = useState(0);
-    useEffect(() => {
-        setAmount(cart.quantity);
-    }, [cart])
-    const handleAddAmount = () => {
-        if (amount < cart.product.inStock) {
-            setAmount(amount + 1);
-            handleAddAmountProduct(cart.product, amount + 1);
-        } else {
-            toast("Số lượng hiện tại cao hơn số lượng hàng tồn!", toastConfig);
-        }
-    }
-    const handleMinusAmount = () => {
-        if (amount > 1) {
-            setAmount(amount - 1);
-            handleAddAmountProduct(cart.product, amount - 1);
-        }
-    }
+    // const dispatch = useDispatch();
+    // const { cart, deleteProductInCartRequest, handleAddAmountProduct } = props;
+    // const [amount, setAmount] = useState(0);
+    // useEffect(() => {
+    //     setAmount(cart.quantity);
+    // }, [cart])
+    // const handleAddAmount = () => {
+    //     if (amount < cart.product.inStock) {
+    //         setAmount(amount + 1);
+    //         handleAddAmountProduct(cart.product, amount + 1);
+    //     } else {
+    //         toast("Số lượng hiện tại cao hơn số lượng hàng tồn!", toastConfig);
+    //     }
+    // }
+    // const handleMinusAmount = () => {
+    //     if (amount > 1) {
+    //         setAmount(amount - 1);
+    //         handleAddAmountProduct(cart.product, amount - 1);
+    //     }
+    // }
     return (
         <li className="cart-item">
-            <span className="cart-remove" onClick={() => deleteProductInCartRequest(dispatch, cart.product._id)}>
+            {/* <span className="cart-remove" onClick={() => deleteProductInCartRequest(dispatch, cart.product._id)}>
                 <span></span>
                 <span></span>
             </span>
@@ -53,7 +53,7 @@ export const CartItem = (props) => {
                 </div>
                 <span className="cart-subTotal">{formatNumber(cart?.quantity * (cart?.product.sale > 0 ? (cart?.product.price - (cart?.product.price * cart?.product.sale / 100)) : cart?.product.price))}₫</span>
                 <span className="cart-subTotal-moblie">Tạm tính: {formatNumber(cart?.quantity * (cart?.product.sale > 0 ? (cart?.product.price - (cart?.product.price * cart?.product.sale / 100)) : cart?.product.price))}₫</span>
-            </div>
+            </div> */}
         </li>
     )
 }

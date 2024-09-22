@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 export const Footer = () => {
     return (
         <footer className="footer-wrap">
-            <nav className="footer-nav">
+            
                 <ul className="nav-list">
                     <li className="nav-item">
                         <Link to="/">
@@ -35,7 +35,7 @@ export const Footer = () => {
                     </li> */}
                 </ul>
                 <p className="nav-copyright">Copyright © Bookie Luci</p>
-            </nav>
+            
         </footer>
 
     )

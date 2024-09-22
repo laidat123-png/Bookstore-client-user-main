@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router';
 import { formatNumber } from '../../helpers/formatNumber';
 export const OrderReceived = () => {
-    const history = useHistory();
-    const order = history.location.state;
-    console.log(history.location);
+    // const history = useHistory();
+    // const order = history.location.state;
+    // console.log(history.location);
     return (
         <div className="order">
-            <Container>
+            {/* <Container>
                 <div className="order-notice">
                     <p>Cảm ơn bạn. Đơn hàng đã được nhận</p>
                     <p>Mã đơn hàng của bạn là <span>{order?._id}</span></p>
@@ -41,7 +41,7 @@ export const OrderReceived = () => {
                 <div className="back-home">
                     <Link to="/Bookstore">Tiếp tục mua sắm</Link>
                 </div>
-            </Container>
+            </Container> */}
         </div>
     )
 }

@@ -13,19 +13,19 @@ import { useSelector, useDispatch } from 'react-redux'
 
 export const Home = () => {
   const products = useSelector((state) => state.products)
-  const posts = useSelector((state) => state.posts.postAll) || []
+  // const posts = useSelector((state) => state.posts.postAll) || []
   return (
     <div>
       <Header />
       <CarouselP />
-      <SearchBar />
+      {/* <SearchBar /> */}
       <Category products={products.productsPopular} label='Popular Books' />
       <Featured product={products.listProduct[1]} />
       <Sale products={products.productsNews} />
       <Maxim />
       <Introduce />
       <Category products={products.productsSale} label='Sale Books' />
-      <Blog posts={posts} />
+      {/* <Blog posts={posts} /> */}
       <Footer />
     </div>
   )

@@ -11,7 +11,7 @@ import { toggleCart } from '../../actions/actionProducts'
 const Menus = [
   {
     to: '/',
-    exact: true,
+    exact: true,//exact: true để chỉ định rằng chỉ khi path trùng khớp hoàn toàn với location.pathname thì Route mới render
     name: 'HOME'
   },
   {
@@ -37,26 +37,26 @@ const Menus = [
 ]
 export const Header = () => {
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.user)
-  const [isClick, setIsClick] = useState(false)
-  const [st, setSt] = useState(false)
-  const [isClickMenu, setIsClickMenu] = useState(false)
+  const user = useSelector((state) => state.user) //lấy user từ store
+  const [isClick, setIsClick] = useState(false) //state để xử lý click menu
+  const [st, setSt] = useState(false) //state để xử lý click menu
+  const [isClickMenu, setIsClickMenu] = useState(false) //state để xử lý click menu
   const carts = useSelector((state) => state.cart)
-  const history = useHistory()
-  const CustomLinkActive = ({ label, to, activeOnlyWhenExact }) => {
+  const history = useHistory() //lấy history từ react-router-dom
+  const CustomLinkActive = ({ label, to, activeOnlyWhenExact }) => { //tạo component để xử lý active class cho menu
     return (
-      <Route
-        path={to}
-        exact={activeOnlyWhenExact}
-        children={({ match }) => {
-          var active = match ? 'active' : ''
+      <Route // định nghĩa 1 tuyến đường trong ứng dụng
+        path={to} // xác định đường dẫn URL
+        exact={activeOnlyWhenExact} //Thuộc tính exact xác định rằng tuyến đường này chỉ khớp chính xác với đường dẫn URL
+        children={({ match }) => { // Hàm này nhận một đối tượng chứa thuộc tính match. Nếu đường dẫn URL hiện tại khớp với path, match sẽ có giá trị, ngược lại sẽ là null
+          var active = match ? 'active' : ''// Nếu match có giá trị (tức là đường dẫn URL hiện tại khớp với path), biến active sẽ được gán giá trị 'active', ngược lại sẽ là chuỗi rỗng ''
           return (
             <li
-              onClick={isClickFunc}
-              key={label + '1'}
-              className={`navbar-item ${active}`}
+              onClick={isClickFunc} // Gọi hàm isClickFunc
+              key={label + '1'} // Đặt key cho menu để React có thể theo dõi các phần tử trong danh sách
+              className={`navbar-item ${active}`} // Đặt className cho phần tử <li>, bao gồm cả 'navbar-item' và giá trị của biến active
             >
-              <Link to={to}>{label}</Link>
+              <Link to={to}>{label}</Link> {/* Tạo một liên kết đến đường dẫn URL được xác định bởi thuộc tính to */}
             </li>
           )
         }}
@@ -64,7 +64,7 @@ export const Header = () => {
     )
   }
   const isClickFunc = () => {
-    setIsClick(!isClick)
+    setIsClick(!isClick) 
   }
   return (
     <header
@@ -81,16 +81,16 @@ export const Header = () => {
               <p className='header-logo-description'>Đam mê sách</p>
             </Link>
           </h1>
-          <nav className={`header-navbar ${isClickMenu ? 'active' : ''}`}>
+          <nav className={`header-navbar ${isClickMenu ? 'active' : ''}`}> 
             <ul className='navbar-list'>
-              {Menus.map((menu) => {
+              {Menus.map((menu) => {//Duyệt qua mảng Menus để tạo các menu
                 return (
-                  <CustomLinkActive
-                    key={menu.path}
-                    to={menu.to}
-                    label={menu.name}
-                    activeOnlyWhenExact={menu.exact}
-                    isClick={isClickFunc}
+                  <CustomLinkActive 
+                    key={menu.path} //Đặt key cho CustomLinkActive
+                    to={menu.to} //Truyền giá trị của thuộc tính to cho CustomLinkActive
+                    label={menu.name} //Truyền giá trị của thuộc tính name cho CustomLinkActive
+                    activeOnlyWhenExact={menu.exact} //Truyền giá trị của thuộc tính exact cho CustomLinkActive
+                    isClick={isClickFunc} //Truyền hàm isClickFunc cho CustomLinkActive
                   />
                 )
               })}
@@ -113,27 +113,27 @@ export const Header = () => {
                 <FaShoppingBasket />
                 <div className='header-cart__amount'>{carts?.length || 0}</div>
               </div> */}
-              {Object.getOwnPropertyNames(user).length !== 0 ? (
+              {Object.getOwnPropertyNames(user).length !== 0 ? ( //Kiểm tra xem user có thuộc tính nào không,Nếu điều kiện này đúng, phần tử <div> sẽ được hiển thị.
                 <div onClick={() => setSt(!st)} className='header-account'>
                   <img
                     src={
-                      user.image ||
+                      user.image || //Nếu user có thuộc tính image, sẽ hiển thị ảnh đại diện của user, ngược lại sẽ hiển thị ảnh mặc định
                       `https://thumbs.dreamstime.com/b/default-avatar-profile-image-vector-social-media-user-icon-potrait-182347582.jpg`
                     }
-                    alt={user._id}
+                    alt={user._id} //Đặt thuộc tính alt của hình ảnh bằng _id của người dùng, giúp cải thiện khả năng truy cập
                   />
-                  <BsChevronDown
+                  {/* <BsChevronDown //Icon mũi tên xuống
                     fontWeight='bold'
                     fontSize='1.2rem'
                     color='white'
-                  />
+                  /> */}
                   {st ? (
                     <ul className='header-account_settings'>
-                      {user.role === 'admin' ? (
+                      {user.role === 'admin' ? ( //Kiểm tra xem user có quyền admin không, nếu có sẽ hiển thị menu Dashboard
                         <li>
-                          <a href='http://localhost:3000/login'>
+                          {/* <a href='http://localhost:3000/login'>
                             Dashboard
-                          </a>
+                          </a> */}
                         </li>
                       ) : (
                         ''

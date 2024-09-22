@@ -12,30 +12,30 @@ import { useSelector, useDispatch } from "react-redux";
 import { getPostByPageRequest, onResetPosts } from "../../actions/actionPosts";
 import { SkeletonPost } from "./SkeletonPost";
 export const Blog = () => {
-    const dispatch = useDispatch();
-    const posts = useSelector(state => state.posts.postAll) || [];
-    let postsPage = useSelector(state => state.posts.postsPage) || [];
-    const loadingdtb = useSelector(state => state.loading.loadingdtb);
-    const totalPage = useSelector(state => state.posts.totalPage) || 0;
-    const types = useSelector(state => state.products.typeProduct);
-    const productTopRate = useSelector(state => state.products.productTopRate);
-    const productSale = useSelector(state => state.products.productsSale);
-    const [paginate, setPaginate] = useState({
-        page: 1,
-        limit: 4
-    });
-    const onChangePaginate = (page) => {
-        setPaginate({ ...paginate, page })
-    }
-    useEffect(() => {
-        getPostByPageRequest(dispatch, paginate);
-        return () => {
-            dispatch(onResetPosts());
-        }
-    }, [paginate])
+    // const dispatch = useDispatch();
+    // const posts = useSelector(state => state.posts.postAll) || [];
+    // let postsPage = useSelector(state => state.posts.postsPage) || [];
+    // const loadingdtb = useSelector(state => state.loading.loadingdtb);
+    // const totalPage = useSelector(state => state.posts.totalPage) || 0;
+    // const types = useSelector(state => state.products.typeProduct);
+    // const productTopRate = useSelector(state => state.products.productTopRate);
+    // const productSale = useSelector(state => state.products.productsSale);
+    // const [paginate, setPaginate] = useState({
+    //     page: 1,
+    //     limit: 4
+    // });
+    // const onChangePaginate = (page) => {
+    //     setPaginate({ ...paginate, page })
+    // }
+    // useEffect(() => {
+    //     getPostByPageRequest(dispatch, paginate);
+    //     return () => {
+    //         dispatch(onResetPosts());
+    //     }
+    // }, [paginate])
     return (
         <div className="blog-page">
-            <Container>
+            {/* <Container>
                 <Row>
                     <Col lg={8}>
                         {loadingdtb ? <SkeletonPost /> : ""}
@@ -83,7 +83,7 @@ export const Blog = () => {
                         />
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
         </div>
     )
 }

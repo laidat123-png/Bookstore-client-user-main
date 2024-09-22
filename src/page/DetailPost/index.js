@@ -16,52 +16,52 @@ import { toast } from "react-toastify";
 import { toastConfig } from "../../constants/configToast";
 
 export const DetailPost = () => {
-    const dispatch = useDispatch();
-    const params = useParams();
-    const post = useSelector(state => state.posts.post);
-    const posts = useSelector(state => state.posts.postAll);
-    const comments = useSelector(state => state.comment);
-    const loadingCmt = useSelector(state => state.loading.loadingcmt);
-    const loadingdtb = useSelector(state => state.loading.loadingdtb);
-    const productsSale = useSelector(state => state.products.productsSale);
-    const types = useSelector(state => state.products.typeProduct);
-    const productTopRate = useSelector(state => state.products.productTopRate);
-    const userID = useSelector(state => state.user._id);
-    const [index, setIndex] = useState(-1);
-    const [showForm, setShowForm] = useState("");
-    useEffect(() => {
-        getOnePostRequest(dispatch, params.id);
-        setIndex(findIndex(params.id, posts));
-        window.scrollTo({
-            top: 500,
-            behavior: "smooth"
-        });
-    }, [params.id]);
-    const findIndex = (id, arr) => {
-        let index = -1;
-        arr.forEach((element, i) => {
-            if (element._id === id) index = i;
-        });
-        return index;
-    }
-    const onSubmitCmt = (data, id) => {
-        if (userID) {
-            if (id) {
-                replyCmtRequest(dispatch, data, id);
-            } else {
-                addCmtPostRequest(dispatch, data, post._id);
-            }
-        } else {
-            toast("Hãy đăng nhập để bình luận", toastConfig);
-        }
-    }
-    const onDeleteComment = (idCmt, idPost) => {
-        deleteCommentRequest(dispatch, idCmt, idPost);
-        setShowForm("");
-    }
+    // const dispatch = useDispatch();
+    // const params = useParams();
+    // const post = useSelector(state => state.posts.post);
+    // const posts = useSelector(state => state.posts.postAll);
+    // const comments = useSelector(state => state.comment);
+    // const loadingCmt = useSelector(state => state.loading.loadingcmt);
+    // const loadingdtb = useSelector(state => state.loading.loadingdtb);
+    // const productsSale = useSelector(state => state.products.productsSale);
+    // const types = useSelector(state => state.products.typeProduct);
+    // const productTopRate = useSelector(state => state.products.productTopRate);
+    // const userID = useSelector(state => state.user._id);
+    // const [index, setIndex] = useState(-1);
+    // const [showForm, setShowForm] = useState("");
+    // useEffect(() => {
+    //     getOnePostRequest(dispatch, params.id);
+    //     setIndex(findIndex(params.id, posts));
+    //     window.scrollTo({
+    //         top: 500,
+    //         behavior: "smooth"
+    //     });
+    // }, [params.id]);
+    // const findIndex = (id, arr) => {
+    //     let index = -1;
+    //     arr.forEach((element, i) => {
+    //         if (element._id === id) index = i;
+    //     });
+    //     return index;
+    // }
+    // const onSubmitCmt = (data, id) => {
+    //     if (userID) {
+    //         if (id) {
+    //             replyCmtRequest(dispatch, data, id);
+    //         } else {
+    //             addCmtPostRequest(dispatch, data, post._id);
+    //         }
+    //     } else {
+    //         toast("Hãy đăng nhập để bình luận", toastConfig);
+    //     }
+    // }
+    // const onDeleteComment = (idCmt, idPost) => {
+    //     deleteCommentRequest(dispatch, idCmt, idPost);
+    //     setShowForm("");
+    // }
     return (
         <div className="blog-detail">
-            <Container>
+            {/* <Container>
                 <Row>
                     <Col lg={8}>
                         {loadingdtb ? <SkeletonPostDetail /> : <div className="blog-post_wrap">
@@ -185,7 +185,7 @@ export const DetailPost = () => {
                         />
                     </Col>
                 </Row>
-            </Container>
+            </Container> */}
         </div>
     )
 }

@@ -5,16 +5,16 @@ import { formatNumber } from '../../../helpers/formatNumber';
 import { useEffect } from 'react';
 
 export const OrderDetail = (props) => {
-    const { orderDetail, showStatus, showStatusStep, setActive } = props;
-    useEffect(() => {
-        window.scrollTo({
-            top: 500,
-            behavior: "smooth"
-        });
-    }, [orderDetail])
+    // const { orderDetail, showStatus, showStatusStep, setActive } = props;
+    // useEffect(() => {
+    //     window.scrollTo({
+    //         top: 500,
+    //         behavior: "smooth"
+    //     });
+    // }, [orderDetail])
     return (
         <div className="order-detail_wrap">
-            <div className="order-header">
+            {/* <div className="order-header">
                 <button className="order-header-btn" onClick={() => setActive({ profile: false, orders: true, orderDetail: false })} >
                     <AiOutlineLeft />
                     Trở lại
@@ -116,7 +116,7 @@ export const OrderDetail = (props) => {
                     <p>Phương thức thanh toán</p>
                     <p>{orderDetail.pay==='cod'?'Trả tiền mặt':orderDetail.pay==='vnpay'?'Chuyển khoản vnpay':'Trả tiền mặt'}</p>
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
